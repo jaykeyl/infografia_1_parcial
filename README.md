@@ -39,7 +39,7 @@ Es un ave celeste, la cual al presionar la tecla espacio, tendrá dos aves más 
 
 ## Características no implementadas
 
-Como se puede observar en la pantalla de los niveles, se puede ver la honda en la pantalla. Pero debido a falta de tiempo, no se pudo implementar la lógica de que los tiros solos salgan de esta posición. En un futuro, se podría pensar en una implementación de esta honda, para que el juego se parezca más a le original.
+Como se puede observar en la pantalla de los niveles, se puede ver la honda en la pantalla. Pero debido a falta de tiempo, no se pudo implementar la lógica de que los tiros solos salgan de esta posición. En un futuro, se podría pensar en una implementación de esta honda, para que el juego se parezca más a el original.
 
 También se podrá encontrar la imagen del ave bomba que tiene Angry Birds, la cual tampoco se logró implementar, pero en versiones futuras, implementar esta ave y otras que Angry Birds tiene haría el juego aún mas interesante.
 
