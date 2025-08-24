@@ -1,5 +1,7 @@
 # Infografia - Universidad Privada Boliviana 1er parcial
 
+## Por: Tatiana Aramayo
+
 ## Descripción
 
 Este repositorio contiene el código para ejecutar el clon del juego Angry Birds. 
