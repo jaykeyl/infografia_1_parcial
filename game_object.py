@@ -1,3 +1,4 @@
+import math
 import arcade
 import pymunk
 from game_logic import ImpulseVector
@@ -167,6 +168,41 @@ class YellowBird(Bird):
             self.body.apply_impulse_at_local_point(vec)
         self._ability_used = True
 
+class BlueBird(Bird):
+    SPLIT_DEG = 30.0
 
+    def __init__(self, impulse_vector: ImpulseVector, x: float, y: float, space: pymunk.Space, **kwargs):
+        super().__init__(
+            image_path="assets/img/blue.png",
+            impulse_vector=impulse_vector,
+            x=x, y=y, space=space, scale= 0.15, **kwargs
+        )
+        self._ability_used = False
+
+    def trigger_ability(self, sprites_list: arcade.SpriteList | None = None, birds_list: list | None = None):
+        if self._ability_used or not hasattr(self, "body") or not hasattr(self, "shape"):
+            return []
+
+        pos = self.body.position
+        speed = self.body.velocity.length
+        base_angle = float(self.body.angle)
+
+        new_birds = []
+        # only spawn 2 new ones: +SPLIT_DEG and -SPLIT_DEG
+        for off_deg in [self.SPLIT_DEG, -self.SPLIT_DEG]:
+            ang = math.radians(off_deg) + base_angle
+            iv = ImpulseVector(angle=ang, impulse=0.0)
+            b = BlueBird(iv, pos.x, pos.y, self.shape.body.space)
+            b.body.velocity = pymunk.Vec2d(speed, 0).rotated(ang)
+            b.body.angular_velocity = self.body.angular_velocity
+            new_birds.append(b)
+
+            if sprites_list is not None:
+                sprites_list.append(b)
+            if birds_list is not None:
+                birds_list.append(b)
+
+        self._ability_used = True
+        return new_birds
 
 
